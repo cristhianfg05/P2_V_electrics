@@ -1,8 +1,10 @@
+package aplicacio;
 
 public class Main {
 
 	public static void main(String[] args) {
-		System.out.print(false);
+		// TODO Auto-generated method stub
+
 	}
 
 }
