@@ -4,6 +4,11 @@ public class LlistaEstacionsRecarrega {
 	private EstacioRecarregaVE[] lista;
 	private int numEstacions;
 
+	public LlistaEstacionsRecarrega() {
+		this.lista=new EstacioRecarregaVE[0];
+		this.numEstacions = 0;
+	}
+	
 	public void afegirEstacions(EstacioRecarregaVE e) {
 		if (numEstacions >= this.lista.length) {
 			EstacioRecarregaVE[] listaCopia = new EstacioRecarregaVE[numEstacions + 2];
@@ -39,7 +44,7 @@ public class LlistaEstacionsRecarrega {
 		return aux;
 	}
 
-	public EstacioRecarregaVE toStringPrimeraEstacion(String pob) {
+	public EstacioRecarregaVE Instancia_PrimeraEstacion(String pob) {
 		EstacioRecarregaVE aux = null;
 		int i = 0;
 		boolean trobat = false;
@@ -52,5 +57,9 @@ public class LlistaEstacionsRecarrega {
 		}
 		return aux;
 	}
+	
+	//Metodo 5 reotrnar el numero de estaciones que disponen puntos de recarrega de un tipus de estacio
+	//Metodo 6 retornar la instancia de la estacion con mas plazas, en caso de empate devolvemos cualquiera
+	//Metodo 7 retornar un duplicat de la instancia de l'estacio mes propera a la nostra posicio (Metodo distanciaA de la clase EstacioRecarregaE)
 
 }
