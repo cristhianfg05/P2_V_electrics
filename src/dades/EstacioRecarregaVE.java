@@ -26,7 +26,7 @@ public class EstacioRecarregaVE {
 
 	public void afegirTipusVelocitat(String tipusVelocitat) {
 		if (numTipusVelocitat >= this.tipusVelocitat.length) {
-			// si la taula està plena reservem més espai
+			// si la taula està plena reservem més espaaaaai
 			String[] nouAmpliar = new String[numTipusVelocitat + 2];
 			for (int i = 0; i < numTipusVelocitat; i++)
 				nouAmpliar[i] = this.tipusVelocitat[i];
