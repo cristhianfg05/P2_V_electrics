@@ -3,6 +3,7 @@ package dades;
 public class LlistaEstacionsRecarrega {
 	private EstacioRecarregaVE[] lista;
 	private int numEstacions;
+	private static double esPropera = 30; 
 
 	public LlistaEstacionsRecarrega() {
 		this.lista = new EstacioRecarregaVE[0];
@@ -80,5 +81,11 @@ public class LlistaEstacionsRecarrega {
 		}
 		return e;
 	}
+	
+	public static void setEsPropera(double p) {
+		esPropera = p;
+	}
 
+	//Metodo 9 Retorna una llista de estacions properes a naltros (se envia lat y long) se dira que es cercana
+	//Si esta distancia es menor a la variable estatica esPropera
 }
