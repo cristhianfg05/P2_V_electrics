@@ -1,5 +1,7 @@
 package dades;
 
+import java.util.Arrays;
+
 /**
  * @author Cristhian Fajardo
  * @author Arnau Papiol
@@ -17,10 +19,20 @@ public class LlistaEstacionsRecarrega {
 		this.numEstacions = 0;
 	}
 
+	public EstacioRecarregaVE[] getLlista () {
+		return lista;
+	} 
+	
+	
+	@Override
+	public String toString() {
+		return "LlistaEstacionsRecarrega [lista=" + Arrays.toString(lista) + ", numEstacions=" + numEstacions + "]";
+	}
+
 	/**
 	 * @param EstacioRecarregaVE e
 	 * 
-	 * Añade una estación al final pero si no hay espacio en la lista
+	 * Aï¿½ade una estaciï¿½n al final pero si no hay espacio en la lista
 	 * redimensiona esta de manera rudimentaria, creamos una nueva lista de 2
 	 * mas de longitud, se rellena con los datos que tenemos y esta pasa a ser
 	 * la lista principal
@@ -41,9 +53,9 @@ public class LlistaEstacionsRecarrega {
 	/**
 	 * @param String poblacion
 	 * 
-	 * Elimina todas las estaciones que sean de ese municipio, nunca dejará un
+	 * Elimina todas las estaciones que sean de ese municipio, nunca dejarï¿½ un
 	 * espacio vacio en la lista con lo que desplazara hacia la izquierda todos
-	 * los elementos cada vez que se encuentre una estación a eliminar
+	 * los elementos cada vez que se encuentre una estaciï¿½n a eliminar
 	 * 
 	 */
 	public void eliminarConjuntEstacions(String pob) {
@@ -60,7 +72,7 @@ public class LlistaEstacionsRecarrega {
 
 	/**
 	 * @param String poblacion
-	 * @return un print con los datos de todas las estaciones que esten en esa población
+	 * @return un print con los datos de todas las estaciones que esten en esa poblaciï¿½n
 	 */
 	public String toStringPoblacio(String pob) {
 		String aux = "";
@@ -73,7 +85,7 @@ public class LlistaEstacionsRecarrega {
 
 	/**
 	 * @param String poblacion
-	 * @return primera instancia de estación que encuentre en ese municipio
+	 * @return primera instancia de estaciï¿½n que encuentre en ese municipio
 	 */
 	public EstacioRecarregaVE Instancia_PrimeraEstacion(String pob) {
 		EstacioRecarregaVE aux = null;
@@ -92,9 +104,29 @@ public class LlistaEstacionsRecarrega {
 	// Metodo 5 reotrnar el numero de estaciones que disponen puntos de recarrega de
 	// un tipus de estacio
 	
+	public int numEstacionsTipus (String tipus) {
+		int contador=0;
+		for (int i=0; i<numEstacions; i++) {
+			if (lista[i].teAquestTipusRecarrega(tipus)) {
+				contador++;
+			}
+		}
+		return contador;
+	}
+	
 	
 	// Metodo 6 retornar la instancia de la estacion con mas plazas, en caso de
 	// empate devolvemos cualquiera
+	
+	public EstacioRecarregaVE InstanciaMasPlazas (int numplaces) {
+		EstacioRecarregaVE aux=lista[0];
+		for (int i=0; i<numEstacions; i++) {
+			if (lista[i].getNumPlaces()>=aux.getNumPlaces()) {
+				aux=lista[i];
+			}
+		}
+		return aux;
+	}
 	
 	
 	// Metodo 7 retornar un duplicat de la instancia de l'estacio mes propera a la
@@ -102,7 +134,7 @@ public class LlistaEstacionsRecarrega {
 	/**
 	 * @param latitud
 	 * @param longitud
-	 * @return instancia de l'estació mes propera
+	 * @return instancia de l'estaciï¿½ mes propera
 	 */
 	public EstacioRecarregaVE EstacioMesPropera(int lat, int longi) {
 		EstacioRecarregaVE e = lista[0].copia();
@@ -123,7 +155,7 @@ public class LlistaEstacionsRecarrega {
 	 * @param double proper
 	 * 
 	 * Modifica la variable static de la clase, que ens diu la distancia per dir
-	 * que la estació esta a prop nostra.
+	 * que la estaciï¿½ esta a prop nostra.
 	 * 
 	 */
 	public static void setEsPropera(double p) {
@@ -132,4 +164,17 @@ public class LlistaEstacionsRecarrega {
 
 	//Metodo 9 Retorna una llista de estacions properes a naltros (se envia lat y long) se dira que es cercana
 	//Si esta distancia es menor a la variable estatica esPropera
+	
+	public EstacioRecarregaVE[] llistaEstacionsProperes(int lat, int longi) {
+		EstacioRecarregaVE[] llistaEstacions=new EstacioRecarregaVE[numEstacions];
+		int posicion=0;
+		for(int i=0; i<numEstacions; i++) {
+			if (lista[i].distanciaA(lat, longi)<esPropera) {
+				llistaEstacions[posicion]=lista[i].copia();				//la variable posicion serï¿½ para saber donde tenemos que aï¿½adir el elemento
+				posicion++;
+			}
+		}
+		return llistaEstacions;
+	}
+	
 }
