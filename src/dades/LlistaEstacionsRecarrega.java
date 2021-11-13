@@ -95,7 +95,7 @@ public class LlistaEstacionsRecarrega {
 				aux = lista[i];
 				trobat = true;
 			}
-
+			i++;
 		}
 		return aux;
 	}
@@ -167,8 +167,6 @@ public class LlistaEstacionsRecarrega {
 	
 	//Metodo 9 Retorna una llista de estacions properes a naltros (se envia lat y long) se dira que es cercana
 	//Si esta distancia es menor a la variable estatica esPropera
-	
-
 
 	public EstacioRecarregaVE[] llistaEstacionsProperes(float latitud, float longitud) {
 		EstacioRecarregaVE[] llistaEstacions=new EstacioRecarregaVE[numEstacions];

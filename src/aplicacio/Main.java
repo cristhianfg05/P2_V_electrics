@@ -2,6 +2,7 @@ package aplicacio;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import dades.EstacioRecarregaVE;
@@ -83,25 +84,28 @@ public class Main {
 				longitud=teclat.nextFloat();
 				System.out.println(listaActual.EstacioMesPropera(latitud, longitud));
 				break;
-			case 6: // ME IMPRIME MAL :(
+			case 6: 
 				System.out.println("Introdueix la latitud de la teva posició: ");
 				latitud=teclat.nextFloat();
 				System.out.println("Introdueix la longitud de la teva posició: ");
 				longitud=teclat.nextFloat();
+				LlistaEstacionsRecarrega.setEsPropera(30);
 				
-				System.out.println(listaActual.llistaEstacionsProperes(latitud, longitud).toString());
+				System.out.println(Arrays.toString(listaActual.llistaEstacionsProperes(latitud, longitud)));
 				break;
-			case 7:	// ME PASA LO MISMO
+			case 7:	
 				System.out.println("Introdueix la latitud de la teva posició: ");
 				latitud=teclat.nextFloat();
 				System.out.println("Introdueix la longitud de la teva posició: ");
 				longitud=teclat.nextFloat();
-				listaActual.setEsPropera(50);
+				LlistaEstacionsRecarrega.setEsPropera(50);
 				
-				System.out.println(listaActual.llistaEstacionsProperes(latitud, longitud).toString());
+				System.out.println(Arrays.toString(listaActual.llistaEstacionsProperes(latitud, longitud)));
 
 				break;
 			case 8: // COMO ENLAZAMOS SI HA PASADO POR EL 6 o por el 7??
+					//Solamente haz un boleano, si hizo el 6 o el 7 que entre, sino no
+				
 				break;
 			case 9: // VA BIEN
 				System.out.println(listaActual);
