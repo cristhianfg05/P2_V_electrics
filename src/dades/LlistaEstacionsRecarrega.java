@@ -67,7 +67,6 @@ public class LlistaEstacionsRecarrega {
 				numEstacions--;
 			}
 		}
-
 	}
 
 	/**
@@ -84,15 +83,15 @@ public class LlistaEstacionsRecarrega {
 	}
 
 	/**
-	 * @param String poblacion
-	 * @return primera instancia de estaci�n que encuentre en ese municipio
+	 * @param String provincia
+	 * @return primera instancia de estaci�n que encuentre en esa provincia
 	 */
-	public EstacioRecarregaVE Instancia_PrimeraEstacion(String pob) {
+	public EstacioRecarregaVE Instancia_PrimeraEstacion(String provincia) {
 		EstacioRecarregaVE aux = null;
 		int i = 0;
 		boolean trobat = false;
 		while (i < numEstacions && !trobat) {
-			if (lista[i].esTrobaEnAquestMunicipi(pob)) {
+			if (lista[i].esTrobaEnAquestaProvincia(provincia)) {
 				aux = lista[i];
 				trobat = true;
 			}
@@ -118,7 +117,7 @@ public class LlistaEstacionsRecarrega {
 	// Metodo 6 retornar la instancia de la estacion con mas plazas, en caso de
 	// empate devolvemos cualquiera
 	
-	public EstacioRecarregaVE InstanciaMasPlazas (int numplaces) {
+	public EstacioRecarregaVE InstanciaMasPlazas () {
 		EstacioRecarregaVE aux=lista[0];
 		for (int i=0; i<numEstacions; i++) {
 			if (lista[i].getNumPlaces()>=aux.getNumPlaces()) {
@@ -136,14 +135,14 @@ public class LlistaEstacionsRecarrega {
 	 * @param longitud
 	 * @return instancia de l'estaci� mes propera
 	 */
-	public EstacioRecarregaVE EstacioMesPropera(int lat, int longi) {
+	public EstacioRecarregaVE EstacioMesPropera(float latitud, float longitud) {
 		EstacioRecarregaVE e = lista[0].copia();
 		//Ya guardamos la primera distancia para tener una con la que comparar
 		//Al no ser int no disponemos del MAX_VALUE
-		double distancia = lista[0].distanciaA(lat, longi);
+		double distancia = lista[0].distanciaA(latitud, longitud);
 		for (int i = 1; i < numEstacions; i++) {
-			if (lista[i].distanciaA(lat, longi) < distancia) {
-				distancia = lista[i].distanciaA(lat, longi);
+			if (lista[i].distanciaA(latitud, longitud) < distancia) {
+				distancia = lista[i].distanciaA(latitud, longitud);
 				e = lista[i].copia();
 			}
 
@@ -161,15 +160,21 @@ public class LlistaEstacionsRecarrega {
 	public static void setEsPropera(double p) {
 		esPropera = p;
 	}
-
+	
+	public static double getEsPropera() {
+		return esPropera;
+	}
+	
 	//Metodo 9 Retorna una llista de estacions properes a naltros (se envia lat y long) se dira que es cercana
 	//Si esta distancia es menor a la variable estatica esPropera
 	
-	public EstacioRecarregaVE[] llistaEstacionsProperes(int lat, int longi) {
+
+
+	public EstacioRecarregaVE[] llistaEstacionsProperes(float latitud, float longitud) {
 		EstacioRecarregaVE[] llistaEstacions=new EstacioRecarregaVE[numEstacions];
 		int posicion=0;
 		for(int i=0; i<numEstacions; i++) {
-			if (lista[i].distanciaA(lat, longi)<esPropera) {
+			if (lista[i].distanciaA(latitud, longitud)<esPropera) {
 				llistaEstacions[posicion]=lista[i].copia();				//la variable posicion ser� para saber donde tenemos que a�adir el elemento
 				posicion++;
 			}
