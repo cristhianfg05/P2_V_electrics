@@ -69,7 +69,9 @@ public class LlistaEstacionsRecarrega {
 					lista[j] = lista[j + 1];
 				}
 				numEstacions--;
+				i--;
 			}
+			
 		}
 	}
 

@@ -66,13 +66,13 @@ public class Main {
 				}else if(listaActual.Instancia_PrimeraEstacion("Barcelona") == null)
 					System.out.println("L'estació més propera és " + listaActual.Instancia_PrimeraEstacion("Lleida"));
 				else if(listaActual.Instancia_PrimeraEstacion("Lleida") == null)
-					System.out.println("L'estació més propera és " + listaActual.Instancia_PrimeraEstacion("Barcelona"));
+					System.out.println("L'estació més propera és " + listaActual.Instancia_PrimeraEstacion("Barcelona")+" "+listaActual.Instancia_PrimeraEstacion("Barcelona").distanciaA(latitud, longitud));
 					
 				break;
 
 			case 3: // VA BIEN
 				System.out.print("Introdueix el tipus de velocitat: ");
-				tipus = teclat.next();
+				tipus = teclat.nextLine();
 				System.out.println("\nHi han " + listaActual.numEstacionsTipus(tipus) + " del tipus " + tipus + "\n");
 				break;
 
@@ -85,10 +85,6 @@ public class Main {
 				break;
 
 			case 5: // VA BIEN
-				System.out.println("Introdueix la latitud de la teva posició: ");
-				latitud = teclat.nextFloat();
-				System.out.println("Introdueix la longitud de la teva posició: ");
-				longitud = teclat.nextFloat();
 				System.out.println(listaActual.EstacioMesPropera(latitud, longitud));
 				break;
 			case 6:
