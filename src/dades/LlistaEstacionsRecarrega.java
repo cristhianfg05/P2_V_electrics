@@ -10,19 +10,23 @@ public class LlistaEstacionsRecarrega {
 	private EstacioRecarregaVE[] lista;
 	private int numEstacions;
 	private static double esPropera = 30; 
-
+	private int numComproba;
 	/**
 	 * Constructor lista vacia y 0 estaciones
 	 */
 	public LlistaEstacionsRecarrega() {
 		this.lista = new EstacioRecarregaVE[0];
 		this.numEstacions = 0;
+		this.numComproba = 0;
 	}
 
 	public EstacioRecarregaVE[] getLlista () {
 		return lista;
 	} 
 	
+	public int getNumComproba() {
+		return numComproba;
+	}
 	
 	@Override
 	public String toString() {
@@ -175,6 +179,7 @@ public class LlistaEstacionsRecarrega {
 			if (lista[i].distanciaA(latitud, longitud)<esPropera) {
 				llistaEstacions[posicion]=lista[i].copia();				//la variable posicion ser� para saber donde tenemos que a�adir el elemento
 				posicion++;
+				numComproba++;
 			}
 		}
 		return llistaEstacions;
